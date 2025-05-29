@@ -1,9 +1,12 @@
-﻿using WebApi.Data;
+﻿using Business.Models;
+using WebApi.Data;
 
-namespace WebApi.EventService;
-
-public interface IEventService
+namespace WebApi.EventService
 {
-    Task<IEnumerable<EventEntity?>> GetAllAsync();
-    Task<EventEntity?> GetAsync(string eventId);
+    public interface IEventService
+    {
+        Task<EventResult<string>> CreateAsync(CreateEventDTO eventDTO);
+        Task<EventResult<IEnumerable<Event>>> GetAllAsync();
+        Task<EventResult<Event?>> GetAsync(string eventId);
+    }
 }
